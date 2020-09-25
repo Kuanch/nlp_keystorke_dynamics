@@ -25,6 +25,11 @@ def get_data_loader():
 
     typist = np.zeros(data.shape[0])
     typist_list = list(set(data.subject))
+    # FIXME
+    # !!!!!!! Be careful !!!!!!!!
+    # since set() is unordered, sort() is a easy work-around
+    # be careful about the x and label mis-mapping
+    typist_list.sort()
     for i, s in data.subject.iteritems():
         typist[i] = typist_list.index(s)
 
